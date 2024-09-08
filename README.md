@@ -19,3 +19,5 @@ First to create docker image:
    $ sudo docker restart tacacsplus
 
 You can create config file with help on sample tac_plus.conf
+Simply you can pull docker image with this command:
+ $ sudo docker pull jsonwalt/tacacsplus
