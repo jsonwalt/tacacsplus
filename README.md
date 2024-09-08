@@ -17,3 +17,5 @@ First to create docker image:
    $ sudo docker cp ./tac_plus.conf tacacsplus:/etc/tac_plus/tac_plus.conf
 6) Restart docker container to restart service with new configuration file: 
    $ sudo docker restart tacacsplus
+
+You can create config file with help on sample tac_plus.conf
