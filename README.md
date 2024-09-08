@@ -9,11 +9,11 @@ On this project we use latest version (F4.0.4.28) Shrubbery Networks's TACACS+ d
 First to create docker image:
 1) Use Dockerfile to create docker image
   $ sudo docker build --tag tacacsplus .
-2) Create docker volume to copy config file and export accounting logs.
+3) Create docker volume to copy config file and export accounting logs.
    $ sudo docker volume create tacacs_vol
-3) Run docker container
+4) Run docker container
    $ sudo docker run -d --name tacacsplus -p 49:49/tcp --mount src=tacacs_vol,dst=/etc/tac_plus tacacsplus
-4) Copy config file to docker container
+5) Copy config file to docker container
    $ sudo docker cp ./tac_plus.conf tacacsplus:/etc/tac_plus/tac_plus.conf
-5) Restart docker container to restart service with new configuration file.
+6) Restart docker container to restart service with new configuration file.
    $ sudo docker restart tacacsplus
