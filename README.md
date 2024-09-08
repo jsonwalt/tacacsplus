@@ -21,3 +21,9 @@ First to create docker image:
 You can create config file with help on sample tac_plus.conf
 Simply you can pull docker image with this command:
  $ sudo docker pull jsonwalt/tacacsplus
+
+If you considered in sanctions and can not pull docker image from hub.docker.com/jsonwalt you can download image from bellow link and import it manually.
+To download image:
+https://mega.nz/file/3IhQwDbY#TBgRuMBIYRsMzy1fTHXArOsK8F1JGDLgvJHJwGgQJds
+To import image:
+$ sudo docker load -i jsonwalt-tacacsplus.tar
