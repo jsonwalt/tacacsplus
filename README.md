@@ -8,11 +8,11 @@ In this project, we use the latest version (F4.0.4.28) of Shrubbery Networks's T
 
 First to create a docker image:
 1) Use Dockerfile to create a docker image: 
-  $ sudo docker build --tag tacacsplus .
+  $ sudo docker build --tag jsonwalt/tacacsplus .
 3) Create a docker volume to copy the config file and export accounting logs: 
    $ sudo docker volume create tacacs_vol
 4) Run docker container: 
-   $ sudo docker run -d --name tacacsplus --restart always -p 49:49/tcp -e "TZ=Asia/Tehran" --mount src=tacacs_vol,dst=/etc/tac_plus tacacsplus
+   $ sudo docker run -d --name tacacsplus --restart always -p 49:49/tcp -e "TZ=Asia/Tehran" --mount src=tacacs_vol,dst=/etc/tac_plus jsonwalt/tacacsplus
 6) Copy the config file to the docker container: 
    $ sudo docker cp ./tac_plus.conf tacacsplus:/etc/tac_plus/tac_plus.conf
 7) Restart the docker container to restart the service with the new configuration file: 
@@ -27,3 +27,15 @@ If you are subject to sanctions and can not pull the docker image directly from 
   https://mega.nz/file/3IhQwDbY#TBgRuMBIYRsMzy1fTHXArOsK8F1JGDLgvJHJwGgQJds
 - To import images:
   $ sudo docker load -i jsonwalt-tacacsplus.tar
+
+To edit the config file (change a user's password, create a new user, remove a user, change permissions, etc.):
+1) take shell  container:
+   $ sudo docker exec -it tacacsplus /bin/bash
+2) generate md5 password:
+   $ tac_pwd -m
+3) edit config file:
+   $ nano /etc/tac_plus/tac_plus.conf
+4) exit from the container's shell:
+   $ exit
+5) restart the container:
+   $ sudo docker restart tacacsplus
