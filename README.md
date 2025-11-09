@@ -12,7 +12,7 @@ First, to create a Docker image:
 3) Create a Docker volume to copy the config file and export accounting logs: 
    $ sudo docker volume create tacacs_vol
 4) Run Docker container: 
-   $ sudo docker run -d --name tacacsplus --restart always -p 49:49/tcp -e "TZ=Asia/Tehran" --mount src=tacacs_vol,dst=/etc/tac_plus jsonwalt/tacacsplus
+   $ sudo docker run -d --name tacacsplus --restart unless-stopped -p 49:49/tcp -e "TZ=Asia/Tehran" --mount src=tacacs_vol,dst=/etc/tac_plus jsonwalt/tacacsplus
 6) Copy the config file to the Docker container: 
    $ sudo docker cp ./tac_plus.conf tacacsplus:/etc/tac_plus/tac_plus.conf
 7) Restart the Docker container to restart the service with the new configuration file: 
